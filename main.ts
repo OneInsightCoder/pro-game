@@ -25,7 +25,7 @@ info.onScore(4, function () {
         . f f f f f f f f f f f f f f . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
-    the_other_pro_gamer.follow(mySprite, 550)
+    the_other_pro_gamer.follow(mySprite, 400)
     tiles.placeOnRandomTile(the_other_pro_gamer, myTiles.transparency16)
 })
 info.onScore(10, function () {
@@ -83,13 +83,12 @@ info.onScore(6, function () {
         . f 5 5 5 5 5 5 5 5 5 5 5 5 f . 
         . f f f f f f f f f f f f f f . 
         . . . . . . . . . . . . . . . . 
-        `, SpriteKind.Player)
-    Final_boess.follow(mySprite, 800)
+        `, SpriteKind.Enemy)
+    Final_boess.follow(mySprite, 550)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    tiles.placeOnRandomTile(mySprite, sprites.dungeon.floorLight1)
     tiles.placeOnRandomTile(Deahter, sprites.dungeon.floorLight2)
-    tiles.placeOnRandomTile(mySprite, sprites.dungeon.floorLight2)
+    tiles.placeOnRandomTile(mySprite, sprites.dungeon.floorLight1)
     info.changeLifeBy(-1)
 })
 let Final_boess: Sprite = null
