@@ -25,7 +25,7 @@ info.onScore(4, function () {
         . f f f f f f f f f f f f f f . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
-    the_other_pro_gamer.follow(mySprite, 650)
+    the_other_pro_gamer.follow(mySprite, 550)
     tiles.placeOnRandomTile(the_other_pro_gamer, myTiles.transparency16)
 })
 info.onScore(10, function () {
@@ -52,7 +52,7 @@ info.onScore(2, function () {
         . f f f f f f f f f f f f f f . 
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)
-    Deather_reborn.follow(mySprite, 400)
+    Deather_reborn.follow(mySprite, 325)
     tiles.placeOnRandomTile(Deather_reborn, myTiles.transparency16)
 })
 info.onLifeZero(function () {
@@ -61,7 +61,30 @@ info.onLifeZero(function () {
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Coins, function (sprite, otherSprite) {
     tiles.placeOnRandomTile(Coin, sprites.dungeon.floorLight2)
+    tiles.placeOnRandomTile(Coin2, sprites.dungeon.floorLight2)
+    tiles.placeOnRandomTile(Coin3, sprites.dungeon.floorLight2)
     info.changeScoreBy(1)
+})
+info.onScore(6, function () {
+    Final_boess = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . f f f f f f f f f f f f f f . 
+        . f 5 5 5 5 5 5 5 5 5 5 5 5 f . 
+        . f 5 a a a a a a a a a a 5 f . 
+        . f 5 a 2 5 5 2 2 5 5 2 a 5 f . 
+        . f 5 a 2 2 5 2 2 5 2 2 a 5 f . 
+        . f 5 a 5 2 2 2 2 2 2 5 a 5 f . 
+        . f 5 a 5 2 5 2 2 5 2 5 a 5 f . 
+        . f 5 a 5 2 2 2 2 2 2 5 a 5 f . 
+        . f 5 a 5 5 5 5 5 5 5 5 a 5 f . 
+        . f 5 a 2 2 2 2 2 2 2 2 a 5 f . 
+        . f 5 a c c c c c c c c a 5 f . 
+        . f 5 a a a a a a a a a a 5 f . 
+        . f 5 5 5 5 5 5 5 5 5 5 5 5 f . 
+        . f f f f f f f f f f f f f f . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
+    Final_boess.follow(mySprite, 800)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     tiles.placeOnRandomTile(mySprite, sprites.dungeon.floorLight1)
@@ -69,9 +92,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     tiles.placeOnRandomTile(mySprite, sprites.dungeon.floorLight2)
     info.changeLifeBy(-1)
 })
+let Final_boess: Sprite = null
 let Deather_reborn: Sprite = null
 let the_other_pro_gamer: Sprite = null
 let Deahter: Sprite = null
+let Coin3: Sprite = null
+let Coin2: Sprite = null
 let Coin: Sprite = null
 let mySprite: Sprite = null
 mySprite = sprites.create(img`
@@ -110,7 +136,47 @@ Coin = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Coins)
-controller.moveSprite(mySprite, 120, 120)
+Coin2 = sprites.create(img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . c c . . . . . . . . 
+    . . . . c a f b c . . . . . . . 
+    . . . . b f f b c c . . . . . . 
+    . . . a a f b a b a c . . . . . 
+    . . . c a c b b f f b . . . . . 
+    . . . . b f f b f a b . . . . . 
+    . . . . a f f b b b a . . . . . 
+    . . . . . a b b c c . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, SpriteKind.Coins)
+Coin3 = sprites.create(img`
+    ....................
+    ....................
+    ....................
+    ....................
+    ....................
+    ....................
+    .....7977777777.....
+    .....7777777777.....
+    ......66666666......
+    ......99999999......
+    .....9999999999.....
+    .....9999999999.....
+    .....9999999999.....
+    .....9999999999.....
+    .....9999999999.....
+    .....9999999999.....
+    .....9999999999.....
+    ......77777777......
+    ....................
+    ....................
+    `, SpriteKind.Coins)
+controller.moveSprite(mySprite, 125, 125)
 scene.cameraFollowSprite(mySprite)
 tiles.setCurrentTilemap(tilemap`letvel8 -`)
 Deahter = sprites.create(img`
@@ -136,3 +202,5 @@ tiles.placeOnRandomTile(Deahter, sprites.dungeon.floorLight2)
 tiles.placeOnRandomTile(mySprite, sprites.dungeon.floorLight1)
 info.setLife(15)
 tiles.placeOnRandomTile(Coin, sprites.dungeon.floorLight2)
+tiles.placeOnRandomTile(Coin2, sprites.dungeon.floorLight2)
+tiles.placeOnRandomTile(Coin3, sprites.dungeon.floorLight2)
